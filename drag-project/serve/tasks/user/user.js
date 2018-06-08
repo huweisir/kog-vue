@@ -12,7 +12,6 @@ exports.addUserInfo = async(req) => {
     } else {
         let user = new User(req);
         let res = await user.save();
-        debugger;
         return { "successCode": "200" }
     }
 }

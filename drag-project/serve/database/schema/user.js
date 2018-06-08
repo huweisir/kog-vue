@@ -45,7 +45,6 @@ userSchema.virtual('lsLocked').get(() => {
 
 userSchema.pre('save', function(next) {
     //根据save中的isNew判断是否是新加
-    debugger;
     if (this.isNew) {
         this.meta.createDate = this.meta.updateDate = Date.now();
     } else {

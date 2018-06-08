@@ -32,7 +32,7 @@
         </div>
         <div class="cont_form_sign_up" :style="signUp.style"> <a href="javascript:void(0);" @click="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
           <h2>SIGN UP</h2>
-          <input type="text" placeholder="Email"v-model="signUp.data.email" />
+          <input type="text" placeholder="Email" v-model="signUp.data.email" />
           <input type="text" placeholder="User" v-model="signUp.data.username" />
           <input type="password" placeholder="Password" v-model="signUp.data.password"/>
           <input type="password" placeholder="Confirm Password" v-model="signUp.data.password"/>
@@ -45,25 +45,25 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-// import {userInfo} from '../../interface/login.ts';
+import { userInfo } from "../../interface/login";
 export default Vue.extend({
   data() {
     return {
       signUp: {
         style: { opacity: "0", display: "none" },
-        data:{ 
-          username:'',
-          email:'',
-          password:""
+        data: {
+          username: "",
+          email: "",
+          password: ""
         },
-        repeatPassWord:""
+        repeatPassWord: ""
       },
-      login:{
+      login: {
         style: { opacity: "0", display: "none" },
-        data:{
-          username:'',
-          email:'',
-          password:""
+        data: {
+          username: "",
+          email: "",
+          password: ""
         }
       },
       onLogin: false,
@@ -71,7 +71,7 @@ export default Vue.extend({
     };
   },
   async created() {
-    let user=await this.ajax.get(`/user/getuserinfo`);
+    let user = await this.ajax.get(`/user/getuserinfo`);
     console.log(user);
     this.pl();
   },
@@ -110,9 +110,9 @@ export default Vue.extend({
     },
     //点击注册-跳出弹窗动作
     async cambiar_sign_up_submit() {
-      console.log(this.signUp.data.username)
-      let params:userInfo={...this.signUp.data};
-      this.ajax.post(`/user/addUserInfo`,params);
+      console.log(this.signUp.data.username);
+      let params: userInfo = { ...this.signUp.data };
+      this.ajax.post(`/user/addUserInfo`, params);
     },
     ocultar_login_sign_up() {
       this.onLogin = false;
