@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-exports.getUserInfo = async(req) => {
+exports.getUserInfo = async (req) => {
     let user = await User.find()
     return user
 }
-exports.addUserInfo = async(req) => {
+
+exports.addUserInfo = async (req) => {
     let username = req.username || "";
     let userinfo = await User.findOne({ username });
     if (userinfo) {
